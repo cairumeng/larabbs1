@@ -30,7 +30,7 @@
                         {{ Auth::user()->name }}
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="">User Center</a>
+                        <a class="dropdown-item" href="{{route('users.show',Auth::user())}}">User Center</a>
                         <a class="dropdown-item" href="">Info Edit</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" id="logout" href="#">
