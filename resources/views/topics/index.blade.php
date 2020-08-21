@@ -15,10 +15,12 @@
       <div class="card-header bg-transparent">
         <ul class="nav nav-pills">
           <li class="nav-item">
-            <a href="#" class="nav-link active">Last reply</a>
+            <a href="{{ Request::url() }}?order=default"
+              class="nav-link {{ active_class( ! if_query('order', 'recent'))}} ">Last reply</a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">Last post</a>
+            <a href="{{ Request::url() }}?order=recent"
+              class="nav-link nav-link {{ active_class(if_query('order', 'recent')) }}">Last post</a>
           </li>
         </ul>
       </div>

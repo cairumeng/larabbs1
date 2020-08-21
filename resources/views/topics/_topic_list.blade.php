@@ -36,8 +36,13 @@
                 </a>
                 <span> • </span>
                 <i class="far fa-clock"></i>
-                <span class="timeago"
-                    title="最后活跃于：{{ $topic->updated_at }}">{{ $topic->updated_at->diffForHumans() }}</span>
+                <span class="timeago" title="Last updated at：{{ $topic->updated_at }}">Updated at:
+                    {{ $topic->updated_at->diffForHumans() }}</span>
+
+                <span> • </span>
+                <i class="far fa-clock"></i>
+                <span class="timeago" title="Created At：{{ $topic->created_at }}"> Created at:
+                    {{ $topic->created_at->diffForHumans() }}</span>
             </small>
 
         </div>
