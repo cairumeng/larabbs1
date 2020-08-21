@@ -40,11 +40,14 @@
                         {{ Auth::user()->name }}
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{route('users.show',Auth::user())}}">User Center</a>
-                        <a class="dropdown-item" href="{{route('users.edit',Auth::user())}}">Info Edit</a>
+                        <a class="dropdown-item" href="{{route('users.show',Auth::user())}}"><i
+                                class="far fa-user mr-2"></i>User Center</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{{route('users.edit',Auth::user())}}"><i
+                                class="far fa-edit mr-2"></i>Info Edit</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" id="logout" href="#">
-                            <form action="{{ route('logout') }}" method="POST">
+                            <form action="{{ route('logout') }}" method="POST" onsubmit="return confirm('您确定要退出吗？');">
                                 {{ csrf_field() }}
                                 <button class="btn btn-block btn-danger" type="submit" name="button">Logout</button>
                             </form>
