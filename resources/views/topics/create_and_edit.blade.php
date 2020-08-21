@@ -73,8 +73,19 @@
 
 <script>
     $(document).ready(function () {
+        Simditor.locale = 'en-US';
         var editor = new Simditor({
             textarea: $('#editor'),
+            upload: {
+                url: "{{ route('topics.upload_image') }}",
+                params: {
+                    _token: '{{ csrf_token() }}'
+                },
+                fileKey: 'upload_file',
+                connectionCount: 3,
+                leaveConfirm: 'The file is uploading, close this page will cancel the uploading!'
+            },
+            pasteImage: true,
         });
     });
 </script>
