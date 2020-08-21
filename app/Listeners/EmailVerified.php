@@ -26,6 +26,6 @@ class EmailVerified
      */
     public function handle(Verified $event)
     {
-        session()->flash('success','Email verified!')
+        session()->flash('success', 'Email verified!');
     }
 }
