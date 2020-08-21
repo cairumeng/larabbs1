@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
+<link rel="stylesheet" href="{{mix('css/app.css')}}">
+@yield('styles')
 
 <head>
     <meta charset="UTF-8">
@@ -21,6 +23,7 @@
         @include('layouts._footer')
     </div>
     <script src="{{mix('js/app.js')}}"></script>
+    @yield('scripts')
 </body>
 
 </html>
