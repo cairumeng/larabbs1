@@ -37,7 +37,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link bg-transparent  {{ active_class(if_query('tab', 'replies')) }}"
-                            href="{{route('uses.show',[$user->id,'tab'=>'replies'])}}">Replies
+                            href="{{route('users.show',[$user->id,'tab'=>'replies'])}}">Replies
                         </a>
                     </li>
                 </ul>
