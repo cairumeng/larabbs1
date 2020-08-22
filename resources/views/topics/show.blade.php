@@ -26,7 +26,7 @@
   </div>
 
   <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 topic-content">
-    <div class="card ">
+    <div class="card">
       <div class="card-body">
         <h1 class="text-center mt-3 mb-3">
           {{ $topic->title }}
@@ -43,24 +43,33 @@
           {!! $topic->body !!}
         </div>
 
-        @can('update',$topic)
+        @can('update', $topic)
         <div class="operate">
           <hr>
           <a href="{{ route('topics.edit', $topic->id) }}" class="btn btn-outline-secondary btn-sm" role="button">
             <i class="far fa-edit"></i> Edit
           </a>
-          <form action="{{ route('topics.destroy',$topic->id)}}" method="post" style="display: inline-block;"
-            onsubmit="return confirm('Are you sure to delete?')">
-            @csrf
-            @method('delete')
-            <button class="btn btn-outline-secondary btn-sm">
+          <form action="{{ route('topics.destroy', $topic->id) }}" method="post" style="display: inline-block;"
+            onsubmit="return confirm('Are you sure to delete?');">
+            {{ csrf_field() }}
+            {{ method_field('DELETE') }}
+            <button type="submit" class="btn btn-outline-secondary btn-sm">
               <i class="far fa-trash-alt"></i> Delete
             </button>
           </form>
         </div>
         @endcan
+
       </div>
     </div>
+
+    <div class="card topic-reply mt-4">
+      <div class="card-body">
+        @include('topics._reply_box', ['topic' => $topic])
+        @include('topics._reply_list', ['replies' => $topic->replies()->with('user')->get()])
+      </div>
+    </div>
+
   </div>
 </div>
 @stop
