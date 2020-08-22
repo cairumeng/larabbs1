@@ -3,7 +3,6 @@
 namespace App\Observers;
 
 use App\Models\Topic;
-use App\Jobs\TranslateSlug;
 use Illuminate\Support\Str;
 
 // creating, created, updating, updated, saving,

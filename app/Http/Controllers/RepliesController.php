@@ -5,49 +5,27 @@ namespace App\Http\Controllers;
 use App\Models\Reply;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ReplyRequest;
+use Illuminate\Support\Facades\Auth;
 
 class RepliesController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth', ['except' => ['index', 'show']]);
-    }
-
-	public function index()
+	public function __construct()
 	{
-		$replies = Reply::paginate();
-		return view('replies.index', compact('replies'));
+		$this->middleware('auth');
 	}
 
-    public function show(Reply $reply)
-    {
-        return view('replies.show', compact('reply'));
-    }
-
-	public function create(Reply $reply)
+	public function store(Request $request)
 	{
-		return view('replies.create_and_edit', compact('reply'));
-	}
+		$request->validate([
+			'content' => 'required|min:2|max:255'
+		]);
 
-	public function store(ReplyRequest $request)
-	{
-		$reply = Reply::create($request->all());
-		return redirect()->route('replies.show', $reply->id)->with('message', 'Created successfully.');
-	}
-
-	public function edit(Reply $reply)
-	{
-        $this->authorize('update', $reply);
-		return view('replies.create_and_edit', compact('reply'));
-	}
-
-	public function update(ReplyRequest $request, Reply $reply)
-	{
-		$this->authorize('update', $reply);
-		$reply->update($request->all());
-
-		return redirect()->route('replies.show', $reply->id)->with('message', 'Updated successfully.');
+		$reply = Reply::create([
+			'content' => $request->content,
+			'user_id' => Auth::id(),
+			'topic_id' => $request->topic_id,
+		]);
+		return redirect()->to($reply->topic->link())->with('success', 'comment success!');
 	}
 
 	public function destroy(Reply $reply)
@@ -55,6 +33,6 @@ class RepliesController extends Controller
 		$this->authorize('destroy', $reply);
 		$reply->delete();
 
-		return redirect()->route('replies.index')->with('message', 'Deleted successfully.');
+		return redirect()->route('replies.index')->with('success', 'Deleted successfully.');
 	}
 }

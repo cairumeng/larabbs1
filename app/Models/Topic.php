@@ -2,6 +2,9 @@
 
 namespace App\Models;
 
+use App\Models\User;
+use App\Models\Category;
+
 class Topic extends Model
 {
     protected $fillable = ['title', 'body',  'category_id', 'excerpt', 'slug'];
