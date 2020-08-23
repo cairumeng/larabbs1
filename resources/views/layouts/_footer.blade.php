@@ -5,6 +5,6 @@
             or other files on a network. -- Designed by Rumeng ❤
         </p>
 
-        <p class="float-right"><a href="mailto:name@email.com">Contact us</a></p>
+        <p class="float-right"><a href="mailto:{{setting('contact_email')}}">Contact us</a></p>
     </div>
 </footer>

@@ -70,6 +70,9 @@ return array(
             'categories',
             'topics',
             'replies'
+        ],
+        'site management' => [
+            'settings.site',
         ]
     ],
 
