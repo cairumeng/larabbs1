@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Http\Requests\UserRequest;
 use App\Handlers\ImageUploadHandler;
+use Illuminate\Support\Facades\Auth;
 
 class UsersController extends Controller
 {
