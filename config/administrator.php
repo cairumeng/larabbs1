@@ -23,7 +23,7 @@ return array(
      *
      * @type string
      */
-    'title' => env('APP_NAME', 'LaraBBS'),
+    'title' => env('APP_NAME', 'Laravel'),
 
     /*
      * The path to your model config directory
@@ -61,7 +61,9 @@ return array(
      *	)
      */
     'menu' => [
-        'users and permissions' => ['users']
+        'Users and permissions' => [
+            'users',
+        ],
     ],
 
     /*
@@ -94,7 +96,7 @@ return array(
      *
      * @type string
      */
-    'home_page' => '',
+    'home_page' => 'users',
 
     /*
      * The route to which the user will be taken when they click the "back to site" button

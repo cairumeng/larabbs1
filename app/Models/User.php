@@ -5,11 +5,11 @@ namespace App\Models;
 use App\Models\Reply;
 use App\Models\Topic;
 use Illuminate\Support\Facades\Auth;
+use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Auth\MustVerifyEmail as MustVerifyEmailTrait;
 use Illuminate\Contracts\Auth\MustVerifyEmail as MustVerifyEmailContract;
-use Spatie\Permission\Traits\HasRoles;
 
 
 class User extends Authenticatable implements MustVerifyEmailContract
@@ -74,5 +74,24 @@ class User extends Authenticatable implements MustVerifyEmailContract
         $this->notification_count = 0;
         $this->save();
         $this->unreadNotifications->markAsRead();
+    }
+
+    public function setPasswordAttribute($value)
+    {
+        if (strlen($value) != 60) {
+            $value = bcrypt($value);
+        }
+        $this->attributes['password'] = $value;
+    }
+
+
+    public function setAvatarAttribute($path)
+    {
+        if (!\Str::startsWith($path, 'http')) {
+
+            $path = config('app.url') . "/uploads/images/avatars/$path";
+        }
+
+        $this->attributes['avatar'] = $path;
     }
 }
