@@ -51,6 +51,13 @@
                         {{ Auth::user()->name }}
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        @can('manage_contents')
+                        <a class="dropdown-item" href="{{ url(config('administrator.uri')) }}">
+                            <i class="fas fa-tachometer-alt mr-2"></i>
+                            Administration
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        @endcan
                         <a class="dropdown-item" href="{{route('users.show',Auth::user())}}"><i
                                 class="far fa-user mr-2"></i>User Center</a>
                         <div class="dropdown-divider"></div>
