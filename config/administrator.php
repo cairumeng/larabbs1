@@ -66,6 +66,11 @@ return array(
             'roles',
             'permissions'
         ],
+        'content management' => [
+            'categories',
+            'topics',
+            'replies'
+        ]
     ],
 
     /*
