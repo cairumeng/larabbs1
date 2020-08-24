@@ -15,6 +15,9 @@
                 <hr>
                 <h5><strong>created at</strong></h5>
                 <p>{{$user->created_at->diffForHumans()}}</p>
+                <hr>
+                <h5><strong>last acived at</strong></h5>
+                <p title="{{  $user->last_actived_at }}">{{ $user->last_actived_at->diffForHumans() }}</p>
             </div>
         </div>
     </div>
