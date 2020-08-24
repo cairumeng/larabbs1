@@ -73,6 +73,8 @@ return array(
         ],
         'site management' => [
             'settings.site',
+            'links'
+
         ]
     ],
 
